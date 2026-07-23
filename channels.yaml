@@ -1,0 +1,557 @@
+# 频道流媒体映射配置
+channels:
+  # ==================== 央视频-CCTV ====================
+  ysp_cctv1:
+    name: "CCTV01"
+    url: "https://yangshipin.cn/tv/home?pid=600001859"
+    type: "fmp4"
+  ysp_cctv2:
+    name: "CCTV02"
+    url: "https://yangshipin.cn/tv/home?pid=600001800"
+    type: "fmp4"
+  ysp_cctv3:
+    name: "CCTV03"
+    url: "https://yangshipin.cn/tv/home?pid=600001801"
+    type: "fmp4"
+  ysp_cctv4:
+    name: "CCTV04"
+    url: "https://yangshipin.cn/tv/home?pid=600001814"
+    type: "fmp4"
+  ysp_cctv5:
+    name: "CCTV05"
+    url: "https://yangshipin.cn/tv/home?pid=600001818"
+    type: "fmp4"
+  ysp_cctv5plus:
+    name: "CCTV05+"
+    url: "https://yangshipin.cn/tv/home?pid=600001817"
+    type: "fmp4"
+  ysp_cctv6:
+    name: "CCTV06"
+    url: "https://yangshipin.cn/tv/home?pid=600108442"
+    type: "fmp4"
+  ysp_cctv7:
+    name: "CCTV07"
+    url: "https://yangshipin.cn/tv/home?pid=600004092"
+    type: "fmp4"
+  ysp_cctv8:
+    name: "CCTV08"
+    url: "https://yangshipin.cn/tv/home?pid=600001803"
+    type: "fmp4"
+  ysp_cctv9:
+    name: "CCTV09"
+    url: "https://yangshipin.cn/tv/home?pid=600004078"
+    type: "fmp4"
+  ysp_cctv10:
+    name: "CCTV10"
+    url: "https://yangshipin.cn/tv/home?pid=600001805"
+    type: "fmp4"
+  ysp_cctv11:
+    name: "CCTV11"
+    url: "https://yangshipin.cn/tv/home?pid=600001806"
+    type: "fmp4"
+  ysp_cctv12:
+    name: "CCTV12"
+    url: "https://yangshipin.cn/tv/home?pid=600001807"
+    type: "fmp4"
+  ysp_cctv13:
+    name: "CCTV13"
+    url: "https://yangshipin.cn/tv/home?pid=600001811"
+    type: "fmp4"
+  ysp_cctv14:
+    name: "CCTV14"
+    url: "https://yangshipin.cn/tv/home?pid=600001809"
+    type: "fmp4"
+  ysp_cctv15:
+    name: "CCTV15"
+    url: "https://yangshipin.cn/tv/home?pid=600001815"
+    type: "fmp4"
+  ysp_cctv16_hd:
+    name: "CCTV16-HD"
+    url: "https://yangshipin.cn/tv/home?pid=600098637"
+    type: "fmp4"
+  ysp_cctv16_4k:
+    name: "CCTV16(4K)"
+    url: "https://yangshipin.cn/tv/home?pid=600099502"
+    type: "fmp4"
+  ysp_cctv17:
+    name: "CCTV17"
+    url: "https://yangshipin.cn/tv/home?pid=600001810"
+    type: "fmp4"
+  ysp_cctv4k:
+    name: "CCTV4K"
+    url: "https://yangshipin.cn/tv/home?pid=600002264"
+    type: "fmp4"
+  ysp_cctv8k:
+    name: "CCTV8K"
+    url: "https://yangshipin.cn/tv/home?pid=600156816"
+    type: "fmp4"
+  ysp_cgtn:
+    name: "CGTN"
+    url: "https://yangshipin.cn/tv/home?pid=600014550"
+    type: "fmp4"
+  ysp_cgtn_fayu:
+    name: "CGTN法语频道"
+    url: "https://yangshipin.cn/tv/home?pid=600084704"
+    type: "fmp4"
+  ysp_cgtn_eyu:
+    name: "CGTN俄语频道"
+    url: "https://yangshipin.cn/tv/home?pid=600084758"
+    type: "fmp4"
+  ysp_cgtn_alabo:
+    name: "CGTN阿拉伯语频道"
+    url: "https://yangshipin.cn/tv/home?pid=600084782"
+    type: "fmp4"
+  ysp_cgtn_xibanya:
+    name: "CGTN西班牙语频道"
+    url: "https://yangshipin.cn/tv/home?pid=600084744"
+    type: "fmp4"
+  ysp_cgtn_jilu:
+    name: "CGTN外语纪录频道"
+    url: "https://yangshipin.cn/tv/home?pid=600084781"
+    type: "fmp4"
+
+  # ==================== 央视频-卫视高清 ====================
+  ysp_beijingweishi:
+    name: "北京卫视"
+    url: "https://yangshipin.cn/tv/home?pid=600002309"
+    type: "fmp4"
+  ysp_jiangsuweishi:
+    name: "江苏卫视"
+    url: "https://yangshipin.cn/tv/home?pid=600002521"
+    type: "fmp4"
+  ysp_dongfangweishi:
+    name: "东方卫视"
+    url: "https://yangshipin.cn/tv/home?pid=600002483"
+    type: "fmp4"
+  ysp_zhejiangweishi:
+    name: "浙江卫视"
+    url: "https://yangshipin.cn/tv/home?pid=600002520"
+    type: "fmp4"
+  ysp_hunanweishi:
+    name: "湖南卫视"
+    url: "https://yangshipin.cn/tv/home?pid=600002475"
+    type: "fmp4"
+  ysp_hubeiweishi:
+    name: "湖北卫视"
+    url: "https://yangshipin.cn/tv/home?pid=600002508"
+    type: "fmp4"
+  ysp_guangdongweishi:
+    name: "广东卫视"
+    url: "https://yangshipin.cn/tv/home?pid=600002485"
+    type: "fmp4"
+  ysp_guangxiweishi:
+    name: "广西卫视"
+    url: "https://yangshipin.cn/tv/home?pid=600002509"
+    type: "fmp4"
+  ysp_heilongjiangweishi:
+    name: "黑龙江卫视"
+    url: "https://yangshipin.cn/tv/home?pid=600002498"
+    type: "fmp4"
+  ysp_hainanweishi:
+    name: "海南卫视"
+    url: "https://yangshipin.cn/tv/home?pid=600002506"
+    type: "fmp4"
+  ysp_chongqingweishi:
+    name: "重庆卫视"
+    url: "https://yangshipin.cn/tv/home?pid=600002531"
+    type: "fmp4"
+  ysp_shenzhenweishi:
+    name: "深圳卫视"
+    url: "https://yangshipin.cn/tv/home?pid=600002481"
+    type: "fmp4"
+  ysp_sichuanweishi:
+    name: "四川卫视"
+    url: "https://yangshipin.cn/tv/home?pid=600002516"
+    type: "fmp4"
+  ysp_henanweishi:
+    name: "河南卫视"
+    url: "https://yangshipin.cn/tv/home?pid=600002525"
+    type: "fmp4"
+  ysp_fujiandongnanweishi:
+    name: "福建东南卫视"
+    url: "https://yangshipin.cn/tv/home?pid=600002484"
+    type: "fmp4"
+  ysp_guizhouweishi:
+    name: "贵州卫视"
+    url: "https://yangshipin.cn/tv/home?pid=600002490"
+    type: "fmp4"
+  ysp_jiangxiweishi:
+    name: "江西卫视"
+    url: "https://yangshipin.cn/tv/home?pid=600002503"
+    type: "fmp4"
+  ysp_liaoningweishi:
+    name: "辽宁卫视"
+    url: "https://yangshipin.cn/tv/home?pid=600002505"
+    type: "fmp4"
+  ysp_anhuiweishi:
+    name: "安徽卫视"
+    url: "https://yangshipin.cn/tv/home?pid=600002532"
+    type: "fmp4"
+  ysp_hebeiweishi:
+    name: "河北卫视"
+    url: "https://yangshipin.cn/tv/home?pid=600002493"
+    type: "fmp4"
+  ysp_shandongweishi:
+    name: "山东卫视"
+    url: "https://yangshipin.cn/tv/home?pid=600002513"
+    type: "fmp4"
+  ysp_tianjinweishi:
+    name: "天津卫视"
+    url: "https://yangshipin.cn/tv/home?pid=600152137"
+    type: "fmp4"
+  ysp_jilinweishi:
+    name: "吉林卫视"
+    url: "https://yangshipin.cn/tv/home?pid=600190405"
+    type: "fmp4"
+  ysp_shanxiweishi:
+    name: "陕西卫视"
+    url: "https://yangshipin.cn/tv/home?pid=600190400"
+    type: "fmp4"
+  ysp_gansuweishi:
+    name: "甘肃卫视"
+    url: "https://yangshipin.cn/tv/home?pid=600190408"
+    type: "fmp4"
+  ysp_ningxiaweishi:
+    name: "宁夏卫视"
+    url: "https://yangshipin.cn/tv/home?pid=600190737"
+    type: "fmp4"
+  ysp_neimengguweishi:
+    name: "内蒙古卫视"
+    url: "https://yangshipin.cn/tv/home?pid=600190401"
+    type: "fmp4"
+  ysp_yunnanweishi:
+    name: "云南卫视"
+    url: "https://yangshipin.cn/tv/home?pid=600190402"
+    type: "fmp4"
+  ysp_shanxiweishi_jin:
+    name: "山西卫视"
+    url: "https://yangshipin.cn/tv/home?pid=600190407"
+    type: "fmp4"
+  ysp_qinghaiweishi:
+    name: "青海卫视"
+    url: "https://yangshipin.cn/tv/home?pid=600190406"
+    type: "fmp4"
+  ysp_xizangweishi:
+    name: "西藏卫视"
+    url: "https://yangshipin.cn/tv/home?pid=600190403"
+    type: "fmp4"
+  ysp_jiaoyutai1:
+    name: "中国教育电视台1频道"
+    url: "https://yangshipin.cn/tv/home?pid=600171827"
+    type: "fmp4"
+  ysp_xinjiangweishi:
+    name: "新疆卫视"
+    url: "https://yangshipin.cn/tv/home?pid=600152138"
+    type: "fmp4"
+
+  # ==================== 央视官网 ====================
+  cctv1:
+    name: "CCTV-1 综合"
+    url: "https://tv.cctv.com/live/cctv1/"
+    type: "fmp4"
+  cctv2:
+    name: "CCTV-2 财经"
+    url: "https://tv.cctv.com/live/cctv2/"
+    type: "fmp4"
+  cctv3:
+    name: "CCTV-3 综艺"
+    url: "https://tv.cctv.com/live/cctv3/"
+    type: "fmp4"
+  cctv4:
+    name: "CCTV-4 中文国际（亚）"
+    url: "https://tv.cctv.com/live/cctv4/"
+    type: "fmp4"
+  cctv5:
+    name: "CCTV-5 体育"
+    url: "https://tv.cctv.com/live/cctv5/"
+    type: "fmp4"
+  cctv5plus:
+    name: "CCTV-5+ 体育赛事"
+    url: "https://tv.cctv.com/live/cctv5plus/"
+    type: "fmp4"
+  cctv6:
+    name: "CCTV-6 电影"
+    url: "https://tv.cctv.com/live/cctv6/"
+    type: "fmp4"
+  cctv7:
+    name: "CCTV-7 国防军事"
+    url: "https://tv.cctv.com/live/cctv7/"
+    type: "fmp4"
+  cctv8:
+    name: "CCTV-8 电视剧"
+    url: "https://tv.cctv.com/live/cctv8/"
+    type: "fmp4"
+  cctv9:
+    name: "CCTV-9 纪录"
+    url: "https://tv.cctv.com/live/cctvjilu/"
+    type: "fmp4"
+  cctv10:
+    name: "CCTV-10 科教"
+    url: "https://tv.cctv.com/live/cctv10/"
+    type: "fmp4"
+  cctv11:
+    name: "CCTV-11 戏曲"
+    url: "https://tv.cctv.com/live/cctv11/"
+    type: "fmp4"
+  cctv12:
+    name: "CCTV-12 社会与法"
+    url: "https://tv.cctv.com/live/cctv12/"
+    type: "fmp4"
+  cctv13:
+    name: "CCTV-13 新闻"
+    url: "https://tv.cctv.com/live/cctv13/"
+    type: "fmp4"
+  cctv14:
+    name: "CCTV-14 少儿"
+    url: "https://tv.cctv.com/live/cctvchild/"
+    type: "fmp4"
+  cctv15:
+    name: "CCTV-15 音乐"
+    url: "https://tv.cctv.com/live/cctv15/"
+    type: "fmp4"
+  cctv16:
+    name: "CCTV-16 奥林匹克"
+    url: "https://tv.cctv.com/live/cctv16/"
+    type: "fmp4"
+  cctv17:
+    name: "CCTV-17 农业农村"
+    url: "https://tv.cctv.com/live/cctv17/"
+    type: "fmp4"
+  cctveurope:
+    name: "CCTV-4 中文国际（欧）"
+    url: "https://tv.cctv.com/live/cctveurope/index.shtml"
+    type: "fmp4"
+  cctvamerica:
+    name: "CCTV-4 中文国际（美）"
+    url: "https://tv.cctv.com/live/cctvamerica/"
+    type: "fmp4"
+
+  # ==================== 浙江卫视（中国蓝TV） ====================
+  zj_zhejiangweishi:
+    name: "浙江卫视"
+    url: "https://www.cztv.com/liveTV/101"
+
+  zj_qianjiangdushi:
+    name: "钱江都市"
+    url: "https://www.cztv.com/liveTV/102"
+
+  zj_jingjishenghuo:
+    name: "经济生活"
+    url: "https://www.cztv.com/liveTV/103"
+
+  zj_jiaokeyingshi:
+    name: "教科影视"
+    url: "https://www.cztv.com/liveTV/104"
+
+  zj_minshengxiuxian:
+    name: "民生休闲"
+    url: "https://www.cztv.com/liveTV/106"
+
+  zj_xinwen:
+    name: "新闻"
+    url: "https://www.cztv.com/liveTV/107"
+
+  zj_shaoerpindao:
+    name: "少儿频道"
+    url: "https://www.cztv.com/liveTV/108"
+
+  zj_guoji:
+    name: "浙江国际"
+    url: "https://www.cztv.com/liveTV/110"
+
+  zj_haoyigou:
+    name: "好易购"
+    url: "https://www.cztv.com/liveTV/111"
+
+  zj_zhijiangjilu:
+    name: "之江纪录"
+    url: "https://www.cztv.com/liveTV/112"
+
+
+  # ==================== 山东卫视（齐鲁网） ====================
+  sd_sdtv:
+    name: "山东卫视"
+    url: "https://v.iqilu.com/live/sdtv/"
+  sd_qlpd:
+    name: "齐鲁频道"
+    url: "https://v.iqilu.com/live/qlpd/"
+  sd_typd:
+    name: "体育频道"
+    url: "https://v.iqilu.com/live/typd/"
+  sd_shpd:
+    name: "生活频道"
+    url: "https://v.iqilu.com/live/shpd/"
+  sd_zypd:
+    name: "综艺频道"
+    url: "https://v.iqilu.com/live/zypd/"
+  sd_ggpd:
+    name: "新闻频道"
+    url: "https://v.iqilu.com/live/ggpd/"
+  sd_nkpd:
+    name: "农科频道"
+    url: "https://v.iqilu.com/live/nkpd/"
+  sd_yspd:
+    name: "文旅频道"
+    url: "https://v.iqilu.com/live/yspd/"
+  sd_sepd:
+    name: "少儿频道"
+    url: "https://v.iqilu.com/live/sepd/"
+
+  # ==================== 河北卫视 ====================
+  hb_hebeiweishi:
+    name: "河北卫视"
+    url: "https://www.hebtv.com/19/19js/st/xdszb/index.shtml?index=0"
+  hb_jingjishenghuo:
+    name: "经济生活"
+    url: "https://www.hebtv.com/19/19js/st/xdszb/index.shtml?index=1"
+  hb_hebeidushi:
+    name: "河北都市"
+    url: "https://www.hebtv.com/19/19js/st/xdszb/index.shtml?index=2"
+  hb_wenlvtiyu:
+    name: "文旅体育"
+    url: "https://www.hebtv.com/19/19js/st/xdszb/index.shtml?index=3"
+  hb_shaoerkejiao:
+    name: "少儿科教"
+    url: "https://www.hebtv.com/19/19js/st/xdszb/index.shtml?index=4"
+  hb_sannongpindao:
+    name: "三农频道"
+    url: "https://www.hebtv.com/19/19js/st/xdszb/index.shtml?index=5"
+  hb_sanjiagouwu:
+    name: "三佳购物"
+    url: "https://www.hebtv.com/19/19js/st/xdszb/index.shtml?index=6"
+
+  # ==================== 广东卫视（荔枝网） ====================
+  gd_guangdongweishi:
+    name: "广东卫视"
+    url: "https://www.gdtv.cn/tvChannelDetail/43"
+  gd_guangdongzhujiang:
+    name: "广东珠江"
+    url: "https://www.gdtv.cn/tvChannelDetail/44"
+  gd_guangdongxinwen:
+    name: "广东新闻"
+    url: "https://www.gdtv.cn/tvChannelDetail/45"
+  gd_guangdongminsheng:
+    name: "广东民生"
+    url: "https://www.gdtv.cn/tvChannelDetail/48"
+  gd_guangdongtiyu:
+    name: "广东体育"
+    url: "https://www.gdtv.cn/tvChannelDetail/47"
+  gd_dawanquweishi:
+    name: "大湾区卫视"
+    url: "https://www.gdtv.cn/tvChannelDetail/51"
+  gd_dawanquweishi_haiwai:
+    name: "大湾区卫视（海外版）"
+    url: "https://www.gdtv.cn/tvChannelDetail/46"
+  gd_guangdongyingshi:
+    name: "广东影视"
+    url: "https://www.gdtv.cn/tvChannelDetail/53"
+  gd_4kchaogaoqing:
+    name: "4K超高清"
+    url: "https://www.gdtv.cn/tvChannelDetail/16"
+  gd_guangdongshaoer:
+    name: "广东少儿"
+    url: "https://www.gdtv.cn/tvChannelDetail/54"
+  gd_jiajiakatong:
+    name: "嘉佳卡通"
+    url: "https://www.gdtv.cn/tvChannelDetail/66"
+  gd_nanfanggouwu:
+    name: "南方购物"
+    url: "https://www.gdtv.cn/tvChannelDetail/42"
+  gd_lingnanxiqu:
+    name: "岭南戏曲"
+    url: "https://www.gdtv.cn/tvChannelDetail/15"
+  gd_guangdongyidong:
+    name: "广东移动"
+    url: "https://www.gdtv.cn/tvChannelDetail/74"
+  gd_jingdianju:
+    name: "广东台经典剧"
+    url: "https://www.gdtv.cn/tvChannelDetail/100"
+  gd_jilupian:
+    name: "纪录片"
+    url: "https://www.gdtv.cn/tvChannelDetail/94"
+  gd_jiankang:
+    name: "健康"
+    url: "https://www.gdtv.cn/tvChannelDetail/99"
+  gd_grtnshenghuo:
+    name: "GRTN生活频道"
+    url: "https://www.gdtv.cn/tvChannelDetail/102"
+
+  # ==================== 江苏卫视（荔枝新闻 live.jstv.com） ====================
+  js_jsws:
+    name: "江苏卫视"
+    url: "https://live.jstv.com/"
+    jstvId: "jsws"
+  js_jsws4k:
+    name: "江苏卫视(4K)"
+    url: "https://live.jstv.com/"
+    jstvId: "jsws4k"
+  js_jscs:
+    name: "江苏城市"
+    url: "https://live.jstv.com/"
+    jstvId: "jscs"
+  js_jszy:
+    name: "江苏综艺"
+    url: "https://live.jstv.com/"
+    jstvId: "jszy"
+  js_jsys:
+    name: "江苏影视"
+    url: "https://live.jstv.com/"
+    jstvId: "jsys"
+  js_jsxw:
+    name: "江苏新闻"
+    url: "https://live.jstv.com/"
+    jstvId: "jsxw"
+  js_jsjy:
+    name: "江苏教育"
+    url: "https://live.jstv.com/"
+    jstvId: "jsjy"
+  js_jsxx:
+    name: "江苏体育休闲"
+    url: "https://live.jstv.com/"
+    jstvId: "jsxx"
+  js_ymkt:
+    name: "优漫卡通"
+    url: "https://live.jstv.com/"
+    jstvId: "ymkt"
+  js_jsgj:
+    name: "江苏国际"
+    url: "https://live.jstv.com/"
+    jstvId: "jsgj"
+
+  # ==================== 芒果TV ====================
+  mg_jykt:
+    name: "金鹰卡通"
+    url: "https://www.mgtv.com/live?lastp=ch_home&_source_=B"
+    sid: "287"
+  mg_klg:
+    name: "快乐购"
+    url: "https://www.mgtv.com/live?lastp=ch_home&_source_=B"
+    sid: "267"
+  mg_hnjs:
+    name: "湖南经视"
+    url: "https://www.mgtv.com/live?lastp=ch_home&_source_=B"
+    sid: "280"
+  mg_hnyl:
+    name: "湖南娱乐"
+    url: "https://www.mgtv.com/live?lastp=ch_home&_source_=B"
+    sid: "344"
+  mg_hndy:
+    name: "湖南电影"
+    url: "https://www.mgtv.com/live?lastp=ch_home&_source_=B"
+    sid: "221"
+  mg_hnds:
+    name: "湖南都市"
+    url: "https://www.mgtv.com/live?lastp=ch_home&_source_=B"
+    sid: "346"
+  mg_hndsj:
+    name: "湖南电视剧"
+    url: "https://www.mgtv.com/live?lastp=ch_home&_source_=B"
+    sid: "484"
+  mg_jyjs:
+    name: "金鹰纪实"
+    url: "https://www.mgtv.com/live?lastp=ch_home&_source_=B"
+    sid: "316"
+  mg_hnaw:
+    name: "湖南爱晚"
+    url: "https://www.mgtv.com/live?lastp=ch_home&_source_=B"
+    sid: "261"

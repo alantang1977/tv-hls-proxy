@@ -79,3 +79,19 @@ downloads/
 
 cmd.txt
 *.sh
+
+# Puppeteer / Chromium
+chrome-data/
+user-data/
+browser-cache/
+
+# M3U8 临时缓存
+*.m3u8.tmp
+*.ts.tmp
+
+# 本地配置
+config.local.json
+config.private.json
+
+# Docker 数据
+docker-data/
