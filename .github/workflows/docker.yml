@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 env:
-  IMAGE_NAME: wjecee-afk/tv-hls-proxy
+  IMAGE_NAME: wjecee/tv-hls-proxy
 
 jobs:
   docker:
