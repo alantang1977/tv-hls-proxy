@@ -149,6 +149,10 @@ NAME             CPU %     MEM USAGE
 cctv-service     2%        300MiB / 600MiB
 ```
 
+导出 live.m3u,ip修改为你部署的机器的ip
+```
+curl http://192.168.1.1:3000/live.m3u -o live.m3u
+```
 ---
 
 ## 8. 停止服务
