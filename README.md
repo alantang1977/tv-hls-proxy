@@ -127,8 +127,8 @@ docker pull wjecee/tv-hls-proxy:latest
 ```bash
 docker run -d \
   --name cctv-service \
-  --shm-size=64m \
-  --memory=600m \
+  --shm-size=96m \
+  --memory=640m \
   --restart=unless-stopped \
   -p 3000:3000 \
   wjecee/tv-hls-proxy:latest
@@ -146,7 +146,7 @@ docker stats cctv-service
 
 ```
 NAME             CPU %     MEM USAGE
-cctv-service     2%        300MiB / 600MiB
+cctv-service     2%        330MiB / 640MiB
 ```
 
 导出 live.m3u,ip修改为你部署的机器的ip
