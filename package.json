@@ -2,9 +2,9 @@
   "name": "tv-live-proxy",
   "version": "1.0.0",
   "description": "CCTV HLS Server with Puppeteer",
-  "main": "hls.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node hls.js"
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "",
