@@ -17,6 +17,6 @@
     "yaml": "^2.9.0"  
   },
   "puppeteer": {
-    "skip_download": true,
+    "skip_download": true
   }  
 }
