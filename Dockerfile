@@ -46,7 +46,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libnss3 \
     libnspr4 \
     libatk1.0-0 \
-    libatspi0 \
+    libatspi2.0-0 \
     libx11-6 \
     libxcomposite1 \
     libxdamage1 \
