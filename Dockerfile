@@ -1,4 +1,6 @@
+# 1. 编译阶段：仅 amd64 寻找并提取 chrome-headless-shell
 FROM node:22-slim AS builder
+ARG TARGETARCH
 WORKDIR /app
 COPY package.json ./
 
@@ -12,13 +14,11 @@ RUN npm config set registry https://registry.npmmirror.com && \
     npm install ws yaml && \
     npm cache clean --force
 
-# 尝试安装 chrome-headless-shell (仅 amd64 成功，arm64 会失败跳过，使用 || true 防止报错中断)
-RUN npx puppeteer browsers install chrome-headless-shell || true
-
-# 提取 amd64 下下载好的 chrome-headless-shell (如果存在的话)
+# 仅 amd64 下载并提取 chrome-headless-shell；arm64 直接跳过
 RUN mkdir -p /app/chrome-extracted && \
-    SHELL_BIN=$(find /app/.cache -type f -name "chrome-headless-shell" 2>/dev/null | head -n 1) && \
-    if [ -n "$SHELL_BIN" ]; then \
+    if [ "$TARGETARCH" = "amd64" ]; then \
+        npx puppeteer browsers install chrome-headless-shell && \
+        SHELL_BIN=$(find /app/.cache -type f -name "chrome-headless-shell" | head -n 1) && \
         cp -r "$(dirname "$SHELL_BIN")"/* /app/chrome-extracted/ ; \
     fi
 
@@ -28,16 +28,18 @@ RUN find /app/node_modules -type d -name "doc" -not -path "*/yaml/*" -exec rm -r
     find /app/node_modules -type f \( -name "*.md" -o -name "*.ts" -o -name "*.js.map" \) -delete
 
 # -------------------------------------------------------------
+# 2. 运行阶段：按架构精确分支，零冗余
+# -------------------------------------------------------------
 FROM node:22-slim
+ARG TARGETARCH
 
 COPY --from=mwader/static-ffmpeg:6.1 /ffmpeg /usr/local/bin/ffmpeg
 
-# 安装系统运行依赖，同时安装 chromium（给 arm64 架构保底）
+# 基础依赖：arm64 装 chromium，amd64 绝不安装 chromium
 RUN apt-get update && apt-get install -y \
     fonts-wqy-microhei \
     dumb-init \
-    chromium \
-    chromium-sandbox \
+    $( [ "$TARGETARCH" = "arm64" ] && echo "chromium chromium-sandbox" ) \
     libxfixes3 libx11-6 libx11-xcb1 libxcb1 libxrender1 libxi6 \
     libnss3 libnspr4 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxext6 libxrandr2 libgbm1 libasound2 \
     --no-install-recommends && \
@@ -47,19 +49,21 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /app
 COPY package.json ./
 
-ENV NODE_ENV=production \
-    PUPPETEER_EXECUTABLE_PATH=/app/chrome/chrome-headless-shell
+ENV NODE_ENV=production
 
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/chrome-extracted/ /app/chrome/
 
-# 关键魔法：自适应判定！
-# 如果 /app/chrome/ 下存在 Puppeteer 提取的二进制，则保留；
-# 如果不存在（如 arm64），则将系统安装的 /usr/bin/chromium 软链接为 /app/chrome/chrome-headless-shell
-RUN if [ ! -f "/app/chrome/chrome-headless-shell" ]; then \
-        mkdir -p /app/chrome && \
-        ln -s /usr/bin/chromium /app/chrome/chrome-headless-shell ; \
+# 统一路径路径配置（不再搞软链接映射，直接指定真实可执行文件）
+RUN if [ "$TARGETARCH" = "amd64" ]; then \
+        echo "PUPPETEER_EXECUTABLE_PATH=/app/chrome/chrome-headless-shell" >> /etc/environment ; \
+        ln -s /app/chrome/chrome-headless-shell /usr/local/bin/headless-chrome ; \
+    else \
+        echo "PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium" >> /etc/environment ; \
+        ln -s /usr/bin/chromium /usr/local/bin/headless-chrome ; \
     fi
+
+ENV PUPPETEER_EXECUTABLE_PATH=/usr/local/bin/headless-chrome
 
 COPY app.js .
 COPY channels-hook.yaml .
