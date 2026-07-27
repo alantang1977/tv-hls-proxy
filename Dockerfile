@@ -10,22 +10,16 @@ RUN apt-get update && apt-get install -y unzip --no-install-recommends && \
 RUN npm config set registry https://registry.npmmirror.com && \
     npm install --omit=dev && \
     npm install ws yaml && \
-    npm cache clean --force && \
-    npx puppeteer browsers install chrome-headless-shell || npx puppeteer browsers install chrome
+    npm cache clean --force
 
-# -------------------------------------------------------------
-# 强化版提取逻辑：兼容 amd64 与 arm64 的差异
-# -------------------------------------------------------------
+# 尝试安装 chrome-headless-shell (仅 amd64 成功，arm64 会失败跳过，使用 || true 防止报错中断)
+RUN npx puppeteer browsers install chrome-headless-shell || true
+
+# 提取 amd64 下下载好的 chrome-headless-shell (如果存在的话)
 RUN mkdir -p /app/chrome-extracted && \
-    # 1. 优先寻找名称为 chrome-headless-shell 的文件，找不到则寻找名称为 chrome 的文件
-    SHELL_BIN=$(find /app/.cache -type f \( -name "chrome-headless-shell" -o -name "chrome" \) | head -n 1) && \
-    echo "Found chrome binary at: $SHELL_BIN" && \
-    test -n "$SHELL_BIN" && \
-    # 2. 将其所在目录下的所有内容平铺拷贝到 /app/chrome-extracted/
-    cp -r "$(dirname "$SHELL_BIN")"/* /app/chrome-extracted/ && \
-    # 3. 关键补丁：如果解压出来的主程序叫 chrome 而不叫 chrome-headless-shell，自动建立软链接
-    if [ ! -f "/app/chrome-extracted/chrome-headless-shell" ] && [ -f "/app/chrome-extracted/chrome" ]; then \
-        ln -s /app/chrome-extracted/chrome /app/chrome-extracted/chrome-headless-shell ; \
+    SHELL_BIN=$(find /app/.cache -type f -name "chrome-headless-shell" 2>/dev/null | head -n 1) && \
+    if [ -n "$SHELL_BIN" ]; then \
+        cp -r "$(dirname "$SHELL_BIN")"/* /app/chrome-extracted/ ; \
     fi
 
 # 清理 node_modules 瘦身
@@ -38,9 +32,12 @@ FROM node:22-slim
 
 COPY --from=mwader/static-ffmpeg:6.1 /ffmpeg /usr/local/bin/ffmpeg
 
+# 安装系统运行依赖，同时安装 chromium（给 arm64 架构保底）
 RUN apt-get update && apt-get install -y \
     fonts-wqy-microhei \
     dumb-init \
+    chromium \
+    chromium-sandbox \
     libxfixes3 libx11-6 libx11-xcb1 libxcb1 libxrender1 libxi6 \
     libnss3 libnspr4 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxext6 libxrandr2 libgbm1 libasound2 \
     --no-install-recommends && \
@@ -55,6 +52,14 @@ ENV NODE_ENV=production \
 
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/chrome-extracted/ /app/chrome/
+
+# 关键魔法：自适应判定！
+# 如果 /app/chrome/ 下存在 Puppeteer 提取的二进制，则保留；
+# 如果不存在（如 arm64），则将系统安装的 /usr/bin/chromium 软链接为 /app/chrome/chrome-headless-shell
+RUN if [ ! -f "/app/chrome/chrome-headless-shell" ]; then \
+        mkdir -p /app/chrome && \
+        ln -s /usr/bin/chromium /app/chrome/chrome-headless-shell ; \
+    fi
 
 COPY app.js .
 COPY channels-hook.yaml .
