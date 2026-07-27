@@ -46,7 +46,7 @@ COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/chrome-extracted/ /app/chrome/
 
 COPY app.js .
-COPY channels.yaml .
+COPY channels-hook.yaml .
 
 EXPOSE 3000
 
