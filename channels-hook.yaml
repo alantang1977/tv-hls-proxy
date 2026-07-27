@@ -401,42 +401,42 @@ channels:
     type: "fmp4"
     group: "CCTV"
   cctv10:
-    name: "HD CCTV-10 科教"
+    name: "HD CCTV10 科教"
     url: "https://tv.cctv.com/live/cctv10/"
     type: "fmp4"
     group: "CCTV"
   cctv11:
-    name: "HD CCTV-11 戏曲"
+    name: "HD CCTV11 戏曲"
     url: "https://tv.cctv.com/live/cctv11/"
     type: "fmp4"
     group: "CCTV"
   cctv12:
-    name: "HD CCTV-12 社会与法"
+    name: "HD CCTV12 社会与法"
     url: "https://tv.cctv.com/live/cctv12/"
     type: "fmp4"
     group: "CCTV"
   cctv13:
-    name: "HD CCTV-13 新闻"
+    name: "HD CCTV13 新闻"
     url: "https://tv.cctv.com/live/cctv13/"
     type: "fmp4"
     group: "CCTV"
   cctv14:
-    name: "HD CCTV-14 少儿"
+    name: "HD CCTV14 少儿"
     url: "https://tv.cctv.com/live/cctvchild/"
     type: "fmp4"
     group: "CCTV"
   cctv15:
-    name: "HD CCTV-15 音乐"
+    name: "HD CCTV15 音乐"
     url: "https://tv.cctv.com/live/cctv15/"
     type: "fmp4"
     group: "CCTV"
   cctv16:
-    name: "HD CCTV-16 奥林匹克"
+    name: "HD CCTV16 奥林匹克"
     url: "https://tv.cctv.com/live/cctv16/"
     type: "fmp4"
     group: "CCTV"
   cctv17:
-    name: "HD CCTV-17 农业农村"
+    name: "HD CCTV17 农业农村"
     url: "https://tv.cctv.com/live/cctv17/"
     type: "fmp4"
     group: "CCTV"
@@ -453,7 +453,7 @@ channels:
 
   # ==================== 央视频-CCTV（fmp4 类型） ====================
   ysp_cctv1:
-    name: "FHD CCTV-1"
+    name: "FHD CCTV1"
     url: "https://yangshipin.cn/tv/home?pid=600001859"
     type: "fmp4"
     group: "央视频"
