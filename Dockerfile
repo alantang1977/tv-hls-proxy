@@ -7,7 +7,10 @@ WORKDIR /app
 
 COPY package.json ./
 
-# 安装 curl 和 tar 方便拉取解压二进制文件
+# 跳过 puppeteer 自动下载 Chrome，避免解压报错并加速安装
+ENV PUPPETEER_SKIP_DOWNLOAD=true
+
+# 安装 curl 和 tar 用于下载并解压预编译的 headless-shell
 RUN apt-get update && apt-get install -y curl tar --no-install-recommends && \
     rm -rf /var/lib/apt/lists/*
 
@@ -16,7 +19,7 @@ RUN npm config set registry https://registry.npmmirror.com && \
     npm install ws yaml && \
     npm cache clean --force
 
-# 根据架构下载对应的预编译 chromium-headless-shell 压缩包并解压到 /app/chrome
+# 根据架构下载对应的预编译 chromium-headless-shell 压缩包并解压
 RUN mkdir -p /app/chrome && \
     if [ "$TARGETARCH" = "amd64" ]; then \
         URL="https://github.com/Aletherium/chromium-headless-shell/releases/download/chromedp-148.0.7778.97/chromium-headless-shell-linux-amd64.tar.gz" ; \
@@ -37,7 +40,7 @@ FROM node:22-slim
 
 COPY --from=mwader/static-ffmpeg:6.1 /ffmpeg /usr/local/bin/ffmpeg
 
-# 安装精简后的运行依赖（基于 ldd 验证，支持中文字体）
+# 安装运行所需的依赖库与中文字体
 RUN apt-get update && apt-get install -y --no-install-recommends \
     fonts-wqy-microhei \
     dumb-init \
@@ -68,7 +71,7 @@ ENV NODE_ENV=production
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/chrome/ /app/chrome/
 
-# 精准创建软链接：指向 /app/chrome/headless-shell
+# 创建软链接指向 /app/chrome/headless-shell
 RUN ln -sf /app/chrome/headless-shell /usr/local/bin/headless-chrome
 
 ENV PUPPETEER_EXECUTABLE_PATH=/usr/local/bin/headless-chrome
