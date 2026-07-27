@@ -56,7 +56,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libgbm1 \
     libdrm2 \
     libxkbcommon0 \
-    (libasound2 || libasound2t64) && \
+    libasound2* && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/* /tmp/* /var/tmp/*
 
