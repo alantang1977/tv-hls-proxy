@@ -453,52 +453,52 @@ channels:
 
   # ==================== 央视频-CCTV（fmp4 类型） ====================
   ysp_cctv1:
-    name: "FHD CCTV01"
+    name: "FHD CCTV-1"
     url: "https://yangshipin.cn/tv/home?pid=600001859"
     type: "fmp4"
     group: "央视频"
   ysp_cctv2:
-    name: "FHD CCTV02"
+    name: "FHD CCTV-2"
     url: "https://yangshipin.cn/tv/home?pid=600001800"
     type: "fmp4"
     group: "央视频"
   ysp_cctv3:
-    name: "FHD CCTV03"
+    name: "FHD CCTV-3"
     url: "https://yangshipin.cn/tv/home?pid=600001801"
     type: "fmp4"
     group: "央视频"
   ysp_cctv4:
-    name: "FHD CCTV04"
+    name: "FHD CCTV-4"
     url: "https://yangshipin.cn/tv/home?pid=600001814"
     type: "fmp4"
     group: "央视频"
   ysp_cctv5:
-    name: "FHD CCTV05"
+    name: "FHD CCTV-5"
     url: "https://yangshipin.cn/tv/home?pid=600001818"
     type: "fmp4"
     group: "央视频"
   ysp_cctv5plus:
-    name: "FHD CCTV05+"
+    name: "FHD CCTV-5+"
     url: "https://yangshipin.cn/tv/home?pid=600001817"
     type: "fmp4"
     group: "央视频"
   ysp_cctv6:
-    name: "FHD CCTV06"
+    name: "FHD CCTV-6"
     url: "https://yangshipin.cn/tv/home?pid=600108442"
     type: "fmp4"
     group: "央视频"
   ysp_cctv7:
-    name: "FHD CCTV07"
+    name: "FHD CCTV-7"
     url: "https://yangshipin.cn/tv/home?pid=600004092"
     type: "fmp4"
     group: "央视频"
   ysp_cctv8:
-    name: "FHD CCTV08"
+    name: "FHD CCTV-8"
     url: "https://yangshipin.cn/tv/home?pid=600001803"
     type: "fmp4"
     group: "央视频"
   ysp_cctv9:
-    name: "FHD CCTV09"
+    name: "FHD CCTV-9"
     url: "https://yangshipin.cn/tv/home?pid=600004078"
     type: "fmp4"
     group: "央视频"
