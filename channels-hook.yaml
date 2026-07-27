@@ -1,12 +1,4 @@
-# 频道流媒体映射配置
-# 通用 M3U8 嗅探引擎说明：
-# - 凡 type 未标注或为 "m3u8" 的频道，均走通用嗅探逻辑（自动拦截 m3u8）
-# - 仅江苏、芒果两个平台需要额外钩子参数（jstvId / sid）辅助定位
-# - fmp4 类型走浏览器注入 + FFmpeg 转封装，不受通用引擎影响
-
 channels:
-  # ==================== 江苏卫视（荔枝新闻 live.jstv.com） ====================
-  # 钩子类型：jstv 轮播切换（统一入口 https://live.jstv.com/）
   js_jsws:
     name: "江苏卫视"
     url: "https://live.jstv.com/"
@@ -69,7 +61,7 @@ channels:
     group: "江苏频道"
 
   # ==================== 浙江卫视（中国蓝TV） ====================
-  # 类型：通用嗅探（无需钩子，打开页面即可捕获 m3u8）
+
   zj_zhejiangweishi:
     name: "浙江卫视"
     url: "https://www.cztv.com/liveTV/101"
@@ -122,7 +114,7 @@ channels:
     group: "浙江频道"
 
   # ==================== 山东卫视（齐鲁网） ====================
-  # 类型：通用嗅探（无需钩子）
+  
   sd_sdtv:
     name: "山东卫视"
     url: "https://v.iqilu.com/live/sdtv/"
@@ -170,7 +162,7 @@ channels:
     group: "山东频道"
 
   # ==================== 河北卫视 ====================
-  # 类型：通用嗅探（无需钩子，index 参数由通用引擎自动携带）
+  
   hb_hebeiweishi:
     name: "河北卫视"
     url: "https://www.hebtv.com/19/19js/st/xdszb/index.shtml?index=0"
@@ -208,7 +200,7 @@ channels:
     group: "河北频道"
 
   # ==================== 广东卫视（荔枝网） ====================
-  # 类型：通用嗅探（无需钩子，直接捕获 m3u8）
+
   gd_guangdongweishi:
     name: "广东卫视"
     url: "https://www.gdtv.cn/tvChannelDetail/43"
@@ -301,7 +293,7 @@ channels:
     group: "广东频道"
 
   # ==================== 芒果TV ====================
-  # 钩子类型：mgtv 频道点击（需要 sid 定位频道按钮）
+
   mg_jykt:
     name: "金鹰卡通"
     url: "https://www.mgtv.com/live?lastp=ch_home&_source_=B"
