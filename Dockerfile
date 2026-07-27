@@ -11,13 +11,22 @@ RUN npm config set registry https://registry.npmmirror.com && \
     npm install --omit=dev && \
     npm install ws yaml && \
     npm cache clean --force && \
-    npx puppeteer browsers install chrome-headless-shell
+    npx puppeteer browsers install chrome-headless-shell || npx puppeteer browsers install chrome
 
-# 递归定位并提取 chrome-headless-shell 所在目录（兼容 amd64 / arm64 目录命名差异）
+# -------------------------------------------------------------
+# 强化版提取逻辑：兼容 amd64 与 arm64 的差异
+# -------------------------------------------------------------
 RUN mkdir -p /app/chrome-extracted && \
-    SHELL_BIN=$(find /app/.cache -type f -name "chrome-headless-shell" | head -n 1) && \
+    # 1. 优先寻找名称为 chrome-headless-shell 的文件，找不到则寻找名称为 chrome 的文件
+    SHELL_BIN=$(find /app/.cache -type f \( -name "chrome-headless-shell" -o -name "chrome" \) | head -n 1) && \
+    echo "Found chrome binary at: $SHELL_BIN" && \
     test -n "$SHELL_BIN" && \
-    cp -R "$(dirname "$SHELL_BIN")"/.* /app/chrome-extracted/ 2>/dev/null || cp -R "$(dirname "$SHELL_BIN")"/* /app/chrome-extracted/
+    # 2. 将其所在目录下的所有内容平铺拷贝到 /app/chrome-extracted/
+    cp -r "$(dirname "$SHELL_BIN")"/* /app/chrome-extracted/ && \
+    # 3. 关键补丁：如果解压出来的主程序叫 chrome 而不叫 chrome-headless-shell，自动建立软链接
+    if [ ! -f "/app/chrome-extracted/chrome-headless-shell" ] && [ -f "/app/chrome-extracted/chrome" ]; then \
+        ln -s /app/chrome-extracted/chrome /app/chrome-extracted/chrome-headless-shell ; \
+    fi
 
 # 清理 node_modules 瘦身
 RUN find /app/node_modules -type d -name "doc" -not -path "*/yaml/*" -exec rm -rf {} + && \
@@ -27,7 +36,6 @@ RUN find /app/node_modules -type d -name "doc" -not -path "*/yaml/*" -exec rm -r
 # -------------------------------------------------------------
 FROM node:22-slim
 
-# mwader/static-ffmpeg 原生支持 amd64 和 arm64，可以直接提取
 COPY --from=mwader/static-ffmpeg:6.1 /ffmpeg /usr/local/bin/ffmpeg
 
 RUN apt-get update && apt-get install -y \
