@@ -88,6 +88,7 @@ browser-cache/
 # M3U8 临时缓存
 *.m3u8.tmp
 *.ts.tmp
+Dockerfile_644
 
 # 本地配置
 config.local.json
@@ -99,6 +100,3 @@ docker-data/
 chromium_arm64/
 chromium_x64/
 
-chromium_arm64/
-chromium_x64/
-*.tar.gz
