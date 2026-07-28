@@ -21,7 +21,7 @@ FROM node:22-slim
 # 1. 复制静态 FFmpeg
 COPY --from=mwader/static-ffmpeg:6.1 /ffmpeg /usr/local/bin/ffmpeg
 
-# 2. 安装底层依赖与字体（添加 wget 用于下载，ca-certificates 用于 HTTPS，binutils 用于 strip）
+# 2. 安装底层依赖与字体
 RUN apt-get update && apt-get install -y --no-install-recommends \
     fonts-wqy-microhei \
     dumb-init \
@@ -45,12 +45,22 @@ COPY --from=builder /app/node_modules ./node_modules
 ARG TARGETARCH
 RUN mkdir -p /app/chrome && \
     cd /app/chrome && \
-    wget -q "https://joe513.serv00.net/chromium_${TARGETARCH}.tar.gz" && \
+    echo "Downloading for architecture: ${TARGETARCH}" && \
+    echo "URL: https://joe513.serv00.net/chromium_${TARGETARCH}.tar.gz" && \
+    wget "https://joe513.serv00.net/chromium_${TARGETARCH}.tar.gz" && \
+    echo "Download complete, listing files:" && \
+    ls -la && \
+    echo "Extracting..." && \
     tar xzf "chromium_${TARGETARCH}.tar.gz" && \
+    echo "Extraction complete, listing files:" && \
+    ls -la && \
     rm "chromium_${TARGETARCH}.tar.gz" && \
+    echo "Stripping binaries..." && \
     strip headless-shell && \
     strip *.so 2>/dev/null || true && \
-    chmod +x headless-shell
+    chmod +x headless-shell && \
+    echo "Done, final file list:" && \
+    ls -la
 
 # 5. 复制业务代码
 COPY package.json app.js channels-hook.yaml ./
