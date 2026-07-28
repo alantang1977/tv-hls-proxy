@@ -95,3 +95,7 @@ config.private.json
 
 # Docker 数据
 docker-data/
+
+chromium_arm64/
+chromium_x64/
+
