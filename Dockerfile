@@ -5,7 +5,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # 核心修复：1. 使用新版的 PUPPETEER_SKIP_DOWNLOAD
-#          2. 双重保险，同时保留旧版变量名，并且直接写在 npm install 运行命令的前面
+#           2. 双重保险，同时保留旧版变量名，并且直接写在 npm install 运行命令的前面
 RUN npm config set registry https://registry.npmmirror.com && \
     PUPPETEER_SKIP_DOWNLOAD=true PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true npm install --omit=dev && \
     npm cache clean --force
@@ -41,26 +41,25 @@ ENV NODE_ENV=production \
 # 3. 从 builder 阶段只把清理干净的 node_modules 拿过来
 COPY --from=builder /app/node_modules ./node_modules
 
-# 4. 下载对应平台的 chromium，解压并 strip
+# 4. 下载对应平台的 chromium，解压并 strip（已修复解压与容错逻辑）
 ARG TARGETARCH
-RUN mkdir -p /app/chrome && \
-    cd /app/chrome && \
-    echo "Downloading for architecture: ${TARGETARCH}" && \
-    echo "URL: https://joe513.serv00.net/chromium_${TARGETARCH}.tar.gz" && \
-    wget "https://joe513.serv00.net/chromium_${TARGETARCH}.tar.gz" && \
-    echo "Download complete, listing files:" && \
-    ls -la && \
-    echo "Extracting..." && \
-    tar xzf "chromium_${TARGETARCH}.tar.gz" && \
-    echo "Extraction complete, listing files:" && \
-    ls -la && \
-    rm "chromium_${TARGETARCH}.tar.gz" && \
-    echo "Stripping binaries..." && \
-    strip headless-shell && \
-    strip *.so 2>/dev/null || true && \
-    chmod +x headless-shell && \
-    echo "Done, final file list:" && \
-    ls -la
+RUN mkdir -p /tmp/chrome_extract /app/chrome && \
+    ARCH="${TARGETARCH:-amd64}" && \
+    [ "$ARCH" = "amd64" ] && ARCH="x64" || true && \
+    echo "Downloading for architecture: ${ARCH}" && \
+    wget -q --show-progress -O /tmp/chromium.tar.gz "https://joe513.serv00.net/chromium_${ARCH}.tar.gz" && \
+    tar xzf /tmp/chromium.tar.gz -C /tmp/chrome_extract && \
+    rm -f /tmp/chromium.tar.gz && \
+    if [ -d /tmp/chrome_extract/chromium_${ARCH} ]; then \
+        mv /tmp/chrome_extract/chromium_${ARCH}/* /app/chrome/; \
+    elif [ -d /tmp/chrome_extract/chromium ]; then \
+        mv /tmp/chrome_extract/chromium/* /app/chrome/; \
+    else \
+        mv /tmp/chrome_extract/* /app/chrome/; \
+    fi && \
+    rm -rf /tmp/chrome_extract && \
+    find /app/chrome -type f \( -name "headless-shell" -o -name "*.so*" \) -exec strip --strip-unneeded {} \; 2>/dev/null || true && \
+    chmod +x /app/chrome/headless-shell 2>/dev/null || true
 
 # 5. 复制业务代码
 COPY package.json app.js channels-hook.yaml ./
