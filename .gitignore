@@ -99,3 +99,6 @@ docker-data/
 chromium_arm64/
 chromium_x64/
 
+chromium_arm64/
+chromium_x64/
+*.tar.gz
